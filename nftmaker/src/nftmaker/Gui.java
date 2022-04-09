@@ -56,7 +56,7 @@ public class Gui extends JPanel implements ClipboardOwner
        
         this.setBackground(Color.WHITE);
         this.pickbg = new JButton("Pick BG");
-        this.jcomp5 = new JButton("Test123");
+        this.jcomp5 = new JButton("Test");
         this.start = new JButton("start");
         this.openanti = new JButton("More");
         this.maincolor = new JButton("NFT Maker");
