@@ -7,7 +7,7 @@
 ![alt text](https://img.shields.io/github/last-commit/moritz313/NFT-Maker "Badge")
 
 
-## More Screenshots
+## Screenshot
 <details>
   <summary>Click to Expand!</summary>
   
