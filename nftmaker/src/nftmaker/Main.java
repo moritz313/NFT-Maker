@@ -18,9 +18,25 @@ public class Main {
 
 	BufferedImage image1;
 	BufferedImage image2;
+	BufferedImage image3;
+	BufferedImage image4;
 	
 	public static String bg = "";
 	public static String face = "";
+	
+	public static String bg1 = "";
+	public static String bg2 = "";
+	public static String bg3 = "";
+	public static String bg4 = "";
+	public static String bg5 = "";
+
+	public static String face1 = "";
+	public static String face2 = "";
+	public static String face3 = "";
+	public static String face4 = "";
+	public static String face5 = "";
+	
+	
 	
 	public static int bgcount = 0;
 	public static int facecount = 0;
@@ -52,38 +68,55 @@ public class Main {
 	} 
 	
 	public Main() {
-		JFrame window = new JFrame();
-		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		
-		BufferedImage combinedImage;
-		
-		try {
-			image1 =ImageIO.read(new File(bg));
-			image2 =ImageIO.read(new File(face));
+		for(int i = 1; i < 3; i++) {
+			for(int k = 1; k < 3; k++) {
+				for(int l = 1; l < 3; l++) {
+					for(int m = 1; m < 3; m++) {
+				
 			
-			combinedImage = new BufferedImage(500, 500, BufferedImage.TYPE_INT_ARGB);
+			System.out.println(i);
+			JFrame window = new JFrame();
+			window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 			
-			Graphics2D g = combinedImage.createGraphics();
+			BufferedImage combinedImage;
 			
-			g.drawImage(image1, 0, 0,null);
-			g.drawImage(image2, 0, 0,null);
+			try {
+				image1 =ImageIO.read(new File("C:/Users/morit/Desktop/ShittyTurtles/bg/nft (" + i + ").png"));
+				image2 =ImageIO.read(new File("C:/Users/morit/Desktop/ShittyTurtles/bg/nft (" + k + ").png"));
+				image3 =ImageIO.read(new File("C:/Users/morit/Desktop/ShittyTurtles/bg/nft (" + l + ").png"));
+				image4 =ImageIO.read(new File("C:/Users/morit/Desktop/ShittyTurtles/bg/nft (" + m + ").png"));
+				
+				combinedImage = new BufferedImage(500, 500, BufferedImage.TYPE_INT_ARGB);
+				
+				Graphics2D g = combinedImage.createGraphics();
+				
+				g.drawImage(image1, 0, 0,null);
+				g.drawImage(image2, 0, 0,null);
+				g.drawImage(image3, 0, 0,null);
+				g.drawImage(image4, 0, 0,null);
+				
+				g.dispose();
+				
+				JLabel label = new JLabel();
+				window.add(label);
+				label.setIcon(new ImageIcon(combinedImage));
+				
+				
+				
+				
+				
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
 			
-			g.dispose();
+			window.pack();
+			window.setVisible(true);
 			
-			JLabel label = new JLabel();
-			window.add(label);
-			label.setIcon(new ImageIcon(combinedImage));
-			
-			
-			
-			
-			
-		} catch (IOException e) {
-			e.printStackTrace();
 		}
 		
-		window.pack();
-		window.setVisible(true);
+				}
+			}
+		}
 		
 	}
 

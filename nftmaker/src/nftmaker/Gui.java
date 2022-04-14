@@ -36,7 +36,7 @@ public class Gui extends JPanel implements ClipboardOwner
 	public JButton wavessetting;
 	public JButton exit;
 	public JButton pickface;
-	private JTextField username;
+	private JTextField bgpath;
 	private JLabel status;
 	private ImageIcon icon;
 	
@@ -56,7 +56,7 @@ public class Gui extends JPanel implements ClipboardOwner
        
         this.setBackground(Color.WHITE);
         this.pickbg = new JButton("Pick BG");
-        this.jcomp5 = new JButton("Test");
+        this.jcomp5 = new JButton("Test123");
         this.start = new JButton("start");
         this.openanti = new JButton("More");
         this.maincolor = new JButton("NFT Maker");
@@ -65,7 +65,7 @@ public class Gui extends JPanel implements ClipboardOwner
         this.pickface = new JButton("Pick Face");
         this.exit = new JButton("Exit");
         this.iconBig = new JButton("Icon");
-        this.setUsername(new JTextField());
+        this.setbgpath(new JTextField());
         this.setStatus(new JLabel("Status: Wellcome!"));
         
         this.icon = new ImageIcon(Toolkit.getDefaultToolkit().getImage(new URL("https://i.imgur.com/Yzk3rcS.png")));
@@ -82,7 +82,7 @@ public class Gui extends JPanel implements ClipboardOwner
 //        this.add(this.maincolor);
         //this.add(this.autoPilot);
         //this.add(this.wavessetting);
-        //this.add(this.exit);
+       this.add(this.bgpath);
         this.add(this.pickface);
         this.add(this.iconBig);
        
@@ -131,8 +131,8 @@ public class Gui extends JPanel implements ClipboardOwner
         
         this.iconBig.setBounds(10, h - 40, 290, 60); 
         this.getStatus().setBounds(10, h + 150, 300, 25);
-        this.getUsername().setText("");       
-        this.getUsername().setBounds(170, h + 30, 150, 25);
+        this.getbgpath().setText("");       
+        this.getbgpath().setBounds(170, h + 60, 150, 25);
   
        
         
@@ -219,14 +219,14 @@ public class Gui extends JPanel implements ClipboardOwner
 
 
 
-	public JTextField getUsername() {
-		return username;
+	public JTextField getbgpath() {
+		return bgpath;
 	}
 
 
 
-	public void setUsername(JTextField username) {
-		this.username = username;
+	public void setbgpath(JTextField username) {
+		this.bgpath = username;
 	}
 	
 	public JLabel getStatus() {
