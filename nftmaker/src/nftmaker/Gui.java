@@ -10,6 +10,7 @@ import java.awt.datatransfer.StringSelection;
 import java.awt.datatransfer.Transferable;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
@@ -17,7 +18,9 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.net.URL;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
+import javax.swing.border.Border;
 
 public class Gui extends JPanel implements ClipboardOwner
 {
@@ -28,12 +31,9 @@ public class Gui extends JPanel implements ClipboardOwner
 	public static int c = 0;
 	private static final long serialVersionUID = 1L;
 	private JButton pickbg;
-	private JButton jcomp5;
+	
 	private JButton start;
-	private JButton openanti;
-	public JButton maincolor;
-	public JButton autoPilot;
-	public JButton wavessetting;
+	private JLabel label;
 	public JButton exit;
 	public JButton pickface;
 	private JTextField bgpath;
@@ -41,10 +41,9 @@ public class Gui extends JPanel implements ClipboardOwner
 	private ImageIcon icon;
 	
 	private JButton iconBig;
+	public static JProgressBar progressbar;
 	
     public static String StatusText = "Status:";
-	private int Count = 1;
-	
 	public JFileChooser fc = new JFileChooser();
 	
 	
@@ -55,58 +54,46 @@ public class Gui extends JPanel implements ClipboardOwner
     public Gui() throws MalformedURLException {
        
         this.setBackground(Color.WHITE);
-        this.pickbg = new JButton("Pick BG");
-        this.jcomp5 = new JButton("Test123");
+        this.pickbg = new JButton("How To?");
         this.start = new JButton("start");
-        this.openanti = new JButton("More");
-        this.maincolor = new JButton("NFT Maker");
-        this.autoPilot = new JButton("AutoPilot");
-        this.wavessetting = new JButton("Waves: 1");
-        this.pickface = new JButton("Pick Face");
+  
+      
+        this.pickface = new JButton("Pick Folder");
         this.exit = new JButton("Exit");
         this.iconBig = new JButton("Icon");
         this.setbgpath(new JTextField());
         this.setStatus(new JLabel("Status: Wellcome!"));
+        this.setProgressbar(new JProgressBar());
         
         this.icon = new ImageIcon(Toolkit.getDefaultToolkit().getImage(new URL("https://i.imgur.com/Yzk3rcS.png")));
         
-        this.iconBig.setIcon(new ImageIcon(Toolkit.getDefaultToolkit().getImage(new URL("https://i.imgur.com/BfV9Udz.jpeg"))));
+        this.iconBig.setIcon(new ImageIcon(Toolkit.getDefaultToolkit().getImage(new URL("https://i.imgur.com/nXzmUUw.jpeg"))));
        
+        
+        
+        
         this.setPreferredSize(new Dimension(330, 250));
         this.setLayout(null);
         this.setBackground(Color.WHITE);
         this.add(this.pickbg);
-       // this.add(this.jcomp5);
         this.add(this.start);
-        //this.add(this.openanti);
-//        this.add(this.maincolor);
-        //this.add(this.autoPilot);
-        //this.add(this.wavessetting);
-       this.add(this.bgpath);
+        this.add(this.bgpath);
         this.add(this.pickface);
         this.add(this.iconBig);
-       
+        this.add(this.progressbar);
         
-//        this.add(this.getIcon());
            
-        this.pickbg.setForeground(Color.WHITE);     
-        this.jcomp5.setForeground(Color.BLACK);       
+        this.pickbg.setForeground(Color.WHITE);              
         this.start.setForeground(Color.WHITE);        
-        this.openanti.setForeground(Color.WHITE);        
-        this.maincolor.setForeground(Color.WHITE);
-        this.autoPilot.setForeground(Color.WHITE);
-        this.wavessetting.setForeground(Color.WHITE);
         this.pickface.setForeground(Color.WHITE);
         this.getStatus().setForeground(Color.BLACK);
-        maincolor.setBackground(new Color(8, 160, 201));	
-		pickbg.setBackground(new Color(8, 160, 201));	
-		jcomp5.setBackground(new Color(8, 160, 201));	
-		start.setBackground(new Color(8, 160, 201));	
-		openanti.setBackground(new Color(8, 160, 201));	
-		autoPilot.setBackground(new Color(8, 160, 201));	
-		pickface.setBackground(new Color(8, 160, 201));	
-		wavessetting.setBackground(new Color(8, 160, 201));	
-		exit.setBackground(new Color(8, 160, 201));	
+      
+		pickbg.setBackground(new Color(0, 60, 182));			
+		start.setBackground(new Color(0, 60, 182));			
+		pickface.setBackground(new Color(0, 60, 182));	
+		exit.setBackground(new Color(0, 60, 182));	
+		this.getProgressbar().setForeground(new Color(0, 60, 182));
+		
 		
 		
 		this.iconBig.setMargin(new Insets(0, 0, 0, 0));
@@ -119,21 +106,21 @@ public class Gui extends JPanel implements ClipboardOwner
         
         
         final int h = 50;
-        this.pickbg.setBounds(10, h + 30, 150, 25);       
-        this.jcomp5.setBounds(10, h + 60, 150, 25);
-        this.start.setBounds(10, h + 90, 150, 25);
-        this.openanti.setBounds(10, h + 120, 150, 25);
-        this.maincolor.setBounds(10, h, 310, 25);
-        this.autoPilot.setBounds(10, h + 60, 150, 25);
-        this.wavessetting.setBounds(170, h + 90, 150, 25);
-        this.pickface.setBounds(170, h + 30, 150, 25);
-        this.exit.setBounds(170, h + 120, 150, 25); 
-        
-        this.iconBig.setBounds(10, h - 40, 290, 60); 
-        this.getStatus().setBounds(10, h + 150, 300, 25);
-        this.getbgpath().setText("");       
-        this.getbgpath().setBounds(170, h + 60, 150, 25);
-  
+        this.iconBig.setBounds(15, h - 40, 290, 120); 
+        this.pickbg.setBounds(10, h + 90, 150, 25);
+        this.pickface.setBounds(170, h + 90, 150, 25);
+        this.getbgpath().setBounds(10, h + 120, 310, 25);
+        this.getProgressbar().setBounds(10, h + 150, 310, 25);
+        this.start.setBounds(10, h + 180, 150, 25);
+        this.exit.setBounds(170, h + 180, 150, 25);       
+      
+        this.getStatus().setBounds(10, h + 150, 320, 25);
+        this.getbgpath().setText("Folder Path");       
+//        pickbg.setBorder(new RoundedBorder(10));		
+//		start.setBorder(new RoundedBorder(10));		
+//		pickface.setBorder(new RoundedBorder(10));
+//		exit.setBorder(new RoundedBorder(10));	
+       
        
         
         this.exit.addActionListener(new ActionListener() {
@@ -149,7 +136,10 @@ public class Gui extends JPanel implements ClipboardOwner
 
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				new Main();
+				new Thread(() -> {
+					new Main();
+				}).start();
+				
 			}
         	
         }); 
@@ -241,8 +231,69 @@ public class Gui extends JPanel implements ClipboardOwner
 		// TODO Auto-generated method stub
 		
 	}
+
+
+
+
+
+	public JProgressBar getProgressbar() {
+		return progressbar;
+	}
+
+
+
+
+
+	public void setProgressbar(JProgressBar progressbar) {
+		this.progressbar = progressbar;
+	}
+
+
+
+
+
+	public JLabel getLabel() {
+		return label;
+	}
+
+
+
+
+
+	public void setLabel(JLabel label) {
+		this.label = label;
+	}
 	
+	private static class RoundedBorder implements Border {
+
+	    private int radius;
+
+
+	    RoundedBorder(int radius) {
+	        this.radius = radius;
+	    }
+
+
+	    public Insets getBorderInsets(Component c) {
+	        return new Insets(this.radius+1, this.radius+10, this.radius+2, this.radius);
+	    }
+
+
+	    public boolean isBorderOpaque() {
+	        return true;
+	    }
+
+
+	    public void paintBorder(Component c, Graphics g, int x, int y, int width, int height) {
+	        g.drawRoundRect(x, y, width-1, height-1, radius, radius);
+	        g.drawRoundRect(x, y, width-1, height-1, radius+1, radius+1);
+	        g.drawRoundRect(x, y, width-1, height-1, radius+2, radius+2);
+	        g.drawRoundRect(x, y, width-1, height-1, radius+3, radius+3);
+	        g.drawRoundRect(x, y, width-1, height-1, radius+7, radius+7);
+	        g.drawRoundRect(x, y, width-1, height-1, radius+8, radius+8);
+	        g.drawRoundRect(x, y, width-1, height-1, radius+9, radius+1);
+	    }
 	
 	 
-        
+	}
 }

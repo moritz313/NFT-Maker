@@ -13,6 +13,7 @@ import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JProgressBar;
 
 public class Main {
 
@@ -68,23 +69,25 @@ public class Main {
 	} 
 	
 	public Main() {
-		for(int i = 1; i < 3; i++) {
-			for(int k = 1; k < 3; k++) {
-				for(int l = 1; l < 3; l++) {
-					for(int m = 1; m < 3; m++) {
+		int p = -25;
+		for(int i = 1; i < 6; i++) {
+			for(int k = 1; k < 6; k++) {
+				for(int l = 1; l < 6; l++) {
+					p++;
+					Gui.progressbar.setValue(p);
+					for(int m = 1; m < 6; m++) {
+						
 				
 			
-			System.out.println(i);
-			JFrame window = new JFrame();
-			window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+			
 			
 			BufferedImage combinedImage;
 			
 			try {
 				image1 =ImageIO.read(new File("C:/Users/morit/Desktop/ShittyTurtles/bg/nft (" + i + ").png"));
-				image2 =ImageIO.read(new File("C:/Users/morit/Desktop/ShittyTurtles/bg/nft (" + k + ").png"));
-				image3 =ImageIO.read(new File("C:/Users/morit/Desktop/ShittyTurtles/bg/nft (" + l + ").png"));
-				image4 =ImageIO.read(new File("C:/Users/morit/Desktop/ShittyTurtles/bg/nft (" + m + ").png"));
+				image2 =ImageIO.read(new File("C:/Users/morit/Desktop/ShittyTurtles/base/nft (" + k + ").png"));
+				image3 =ImageIO.read(new File("C:/Users/morit/Desktop/ShittyTurtles/face/nft (" + l + ").png"));
+				image4 =ImageIO.read(new File("C:/Users/morit/Desktop/ShittyTurtles/hat/nft (" + m + ").png"));
 				
 				combinedImage = new BufferedImage(500, 500, BufferedImage.TYPE_INT_ARGB);
 				
@@ -97,11 +100,14 @@ public class Main {
 				
 				g.dispose();
 				
-				JLabel label = new JLabel();
-				window.add(label);
-				label.setIcon(new ImageIcon(combinedImage));
 				
+			
 				
+				try {
+					ImageIO.write(combinedImage, "PNG", new File("C:\\Users\\morit\\Desktop\\ShittyTurtles\\Export\\nft" +i+k+l+m+".png"));
+				} catch(IOException e) {
+					
+				}
 				
 				
 				
@@ -109,8 +115,8 @@ public class Main {
 				e.printStackTrace();
 			}
 			
-			window.pack();
-			window.setVisible(true);
+			//window.pack();
+			//window.setVisible(true);
 			
 		}
 		
