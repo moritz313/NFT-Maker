@@ -1,4 +1,4 @@
-# NFT-Maker
+# NFT-Maker: NFT GEN
 ![alt text](https://i.imgur.com/Ipv5sYn.jpg "Main Banner")
 
 ![alt text](https://img.shields.io/badge/Language%3A-Java-blue "Badge")
