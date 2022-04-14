@@ -69,13 +69,40 @@ public class Main {
 	} 
 	
 	public Main() {
+		int anim = 1;
 		int p = -25;
+		int count = 0;
 		for(int i = 1; i < 6; i++) {
+			
 			for(int k = 1; k < 6; k++) {
 				for(int l = 1; l < 6; l++) {
 					p++;
 					Gui.progressbar.setValue(p);
+					if(p > 0 && p != 100) {
+						Gui.progressbar.setString(p +"%");
+					}else if(p < 0) {
+						
+						if(anim == 1) {
+							Gui.progressbar.setString("Starting");
+							anim++;
+						} else if(anim == 2) {
+							Gui.progressbar.setString("Starting.");
+							anim++;
+						} else if(anim == 3) {
+							Gui.progressbar.setString("Starting..");
+							anim++;
+						}else if(anim == 4) {
+							Gui.progressbar.setString("Starting...");
+							anim = 1;
+						}
+						
+						
+					}else if (p == 100) {
+						Gui.progressbar.setString("Done!");
+					}
 					for(int m = 1; m < 6; m++) {
+					
+					
 						
 				
 			
@@ -108,7 +135,8 @@ public class Main {
 				} catch(IOException e) {
 					
 				}
-				
+				count++;
+				System.out.println("" + count);
 				
 				
 			} catch (IOException e) {

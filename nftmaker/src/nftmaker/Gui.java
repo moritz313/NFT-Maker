@@ -37,13 +37,13 @@ public class Gui extends JPanel implements ClipboardOwner
 	public JButton exit;
 	public JButton pickface;
 	private JTextField bgpath;
-	private JLabel status;
+	public static JLabel status;
 	private ImageIcon icon;
 	
 	private JButton iconBig;
 	public static JProgressBar progressbar;
 	
-    public static String StatusText = "Status:";
+    public static String StatusText = "Generated: 0/625";
 	public JFileChooser fc = new JFileChooser();
 	
 	
@@ -62,7 +62,8 @@ public class Gui extends JPanel implements ClipboardOwner
         this.exit = new JButton("Exit");
         this.iconBig = new JButton("Icon");
         this.setbgpath(new JTextField());
-        this.setStatus(new JLabel("Status: Wellcome!"));
+        this.setStatus(new JLabel(StatusText));
+        
         this.setProgressbar(new JProgressBar());
         
         this.icon = new ImageIcon(Toolkit.getDefaultToolkit().getImage(new URL("https://i.imgur.com/Yzk3rcS.png")));
@@ -72,7 +73,7 @@ public class Gui extends JPanel implements ClipboardOwner
         
         
         
-        this.setPreferredSize(new Dimension(330, 250));
+        this.setPreferredSize(new Dimension(330, 270));
         this.setLayout(null);
         this.setBackground(Color.WHITE);
         this.add(this.pickbg);
@@ -81,12 +82,12 @@ public class Gui extends JPanel implements ClipboardOwner
         this.add(this.pickface);
         this.add(this.iconBig);
         this.add(this.progressbar);
-        
+        this.add(this.status);
            
         this.pickbg.setForeground(Color.WHITE);              
         this.start.setForeground(Color.WHITE);        
         this.pickface.setForeground(Color.WHITE);
-        this.getStatus().setForeground(Color.BLACK);
+        this.getStatus().setForeground(new Color(0, 60, 182));
       
 		pickbg.setBackground(new Color(0, 60, 182));			
 		start.setBackground(new Color(0, 60, 182));			
@@ -94,6 +95,7 @@ public class Gui extends JPanel implements ClipboardOwner
 		exit.setBackground(new Color(0, 60, 182));	
 		this.getProgressbar().setForeground(new Color(0, 60, 182));
 		
+		this.getProgressbar().setStringPainted(true);
 		
 		
 		this.iconBig.setMargin(new Insets(0, 0, 0, 0));
@@ -112,9 +114,10 @@ public class Gui extends JPanel implements ClipboardOwner
         this.getbgpath().setBounds(10, h + 120, 310, 25);
         this.getProgressbar().setBounds(10, h + 150, 310, 25);
         this.start.setBounds(10, h + 180, 150, 25);
+        this.getStatus().setBounds(170, h + 180, 320, 25);
         this.exit.setBounds(170, h + 180, 150, 25);       
       
-        this.getStatus().setBounds(10, h + 150, 320, 25);
+      // this.getStatus().setBounds(10, h + 150, 320, 25);
         this.getbgpath().setText("Folder Path");       
 //        pickbg.setBorder(new RoundedBorder(10));		
 //		start.setBorder(new RoundedBorder(10));		
@@ -264,36 +267,5 @@ public class Gui extends JPanel implements ClipboardOwner
 		this.label = label;
 	}
 	
-	private static class RoundedBorder implements Border {
-
-	    private int radius;
-
-
-	    RoundedBorder(int radius) {
-	        this.radius = radius;
-	    }
-
-
-	    public Insets getBorderInsets(Component c) {
-	        return new Insets(this.radius+1, this.radius+10, this.radius+2, this.radius);
-	    }
-
-
-	    public boolean isBorderOpaque() {
-	        return true;
-	    }
-
-
-	    public void paintBorder(Component c, Graphics g, int x, int y, int width, int height) {
-	        g.drawRoundRect(x, y, width-1, height-1, radius, radius);
-	        g.drawRoundRect(x, y, width-1, height-1, radius+1, radius+1);
-	        g.drawRoundRect(x, y, width-1, height-1, radius+2, radius+2);
-	        g.drawRoundRect(x, y, width-1, height-1, radius+3, radius+3);
-	        g.drawRoundRect(x, y, width-1, height-1, radius+7, radius+7);
-	        g.drawRoundRect(x, y, width-1, height-1, radius+8, radius+8);
-	        g.drawRoundRect(x, y, width-1, height-1, radius+9, radius+1);
-	    }
 	
-	 
-	}
 }
