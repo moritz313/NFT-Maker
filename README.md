@@ -6,6 +6,8 @@
 ![alt text](https://img.shields.io/github/languages/code-size/moritz313/NFT-Maker "Badge")
 ![alt text](https://img.shields.io/github/last-commit/moritz313/NFT-Maker "Badge")
 
+NFT Gen is a software for generating images that are composed of different layers. A background, a base, a face and an accessory (for example a hat or similar). 
+
 
 ## Screenshot
 <details>
