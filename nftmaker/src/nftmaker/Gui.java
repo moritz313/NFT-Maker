@@ -70,8 +70,11 @@ public class Gui extends JPanel implements ClipboardOwner
         
         this.iconBig.setIcon(new ImageIcon(Toolkit.getDefaultToolkit().getImage(new URL("https://i.imgur.com/nXzmUUw.jpeg"))));
        
+     
         
-        
+//        this.pickface.setIcon(new ImageIcon(Toolkit.getDefaultToolkit().getImage(new URL("https://i.imgur.com/FFIvtrL.png"))));
+//        this.pickbg.setIcon(new ImageIcon(Toolkit.getDefaultToolkit().getImage(new URL("https://i.imgur.com/GwXCXuh.png"))));
+//        this.start.setIcon(new ImageIcon(Toolkit.getDefaultToolkit().getImage(new URL("https://i.imgur.com/aLdGeEP.png"))));
         
         this.setPreferredSize(new Dimension(330, 270));
         this.setLayout(null);
@@ -82,7 +85,8 @@ public class Gui extends JPanel implements ClipboardOwner
         this.add(this.pickface);
         this.add(this.iconBig);
         this.add(this.progressbar);
-        this.add(this.status);
+      //  this.add(this.status);
+        
            
         this.pickbg.setForeground(Color.WHITE);              
         this.start.setForeground(Color.WHITE);        
@@ -105,15 +109,16 @@ public class Gui extends JPanel implements ClipboardOwner
 		
 		
         
-        
+		
         
         final int h = 50;
         this.iconBig.setBounds(15, h - 40, 290, 120); 
         this.pickbg.setBounds(10, h + 90, 150, 25);
         this.pickface.setBounds(170, h + 90, 150, 25);
+       // this.pickface.setBounds(170, h + 90, 550, 525);
         this.getbgpath().setBounds(10, h + 120, 310, 25);
         this.getProgressbar().setBounds(10, h + 150, 310, 25);
-        this.start.setBounds(10, h + 180, 150, 25);
+        this.start.setBounds(10, h + 180, 310, 25);
         this.getStatus().setBounds(170, h + 180, 320, 25);
         this.exit.setBounds(170, h + 180, 150, 25);       
       
@@ -267,6 +272,24 @@ public class Gui extends JPanel implements ClipboardOwner
 
 	public void setLabel(JLabel label) {
 		this.label = label;
+	}
+	
+	class RoundBtn implements Border 
+	{
+	    private int r;
+	    RoundBtn(int r) {
+	        this.r = r;
+	    }
+	    public Insets getBorderInsets(Component c) {
+	        return new Insets(this.r+1, this.r+1, this.r+2, this.r);
+	    }
+	    public boolean isBorderOpaque() {
+	        return true;
+	    }
+	    public void paintBorder(Component c, Graphics g, int x, int y, 
+	    int width, int height) {
+	        g.drawRoundRect(x, y, width-1, height-1, r, r);
+	    }
 	}
 	
 	
