@@ -22,20 +22,10 @@ public class Main {
 	BufferedImage image3;
 	BufferedImage image4;
 	
-	public static String bg = "";
-	public static String face = "";
+	public static String path = "";
 	
-	public static String bg1 = "";
-	public static String bg2 = "";
-	public static String bg3 = "";
-	public static String bg4 = "";
-	public static String bg5 = "";
-
-	public static String face1 = "";
-	public static String face2 = "";
-	public static String face3 = "";
-	public static String face4 = "";
-	public static String face5 = "";
+	
+	
 	
 	
 	
@@ -111,10 +101,10 @@ public class Main {
 			BufferedImage combinedImage;
 			
 			try {
-				image1 =ImageIO.read(new File("C:/Users/morit/Desktop/ShittyTurtles/bg/nft (" + i + ").png"));
-				image2 =ImageIO.read(new File("C:/Users/morit/Desktop/ShittyTurtles/base/nft (" + k + ").png"));
-				image3 =ImageIO.read(new File("C:/Users/morit/Desktop/ShittyTurtles/face/nft (" + l + ").png"));
-				image4 =ImageIO.read(new File("C:/Users/morit/Desktop/ShittyTurtles/hat/nft (" + m + ").png"));
+				image1 =ImageIO.read(new File(Main.path  +"/bg/nft (" + i + ").png"));
+				image2 =ImageIO.read(new File(Main.path  +"/base/nft (" + k + ").png"));
+				image3 =ImageIO.read(new File(Main.path  +"/face/nft (" + l + ").png"));
+				image4 =ImageIO.read(new File(Main.path  +"/hat/nft (" + m + ").png"));
 				
 				combinedImage = new BufferedImage(500, 500, BufferedImage.TYPE_INT_ARGB);
 				
@@ -131,7 +121,7 @@ public class Main {
 			
 				
 				try {
-					ImageIO.write(combinedImage, "PNG", new File("C:\\Users\\morit\\Desktop\\ShittyTurtles\\Export\\nft" +i+k+l+m+".png"));
+					ImageIO.write(combinedImage, "PNG", new File(Main.path  +"/Export/nft" +i+k+l+m+".png"));
 				} catch(IOException e) {
 					
 				}

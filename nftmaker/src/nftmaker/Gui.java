@@ -139,6 +139,8 @@ public class Gui extends JPanel implements ClipboardOwner
 
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
+				Main.path =   getbgpath().getText();
+				
 				new Thread(() -> {
 					new Main();
 				}).start();
@@ -190,7 +192,7 @@ public class Gui extends JPanel implements ClipboardOwner
 	               
 	                Gui.this.status.setText("Opening: " + file.getName() + ".");
 	                System.out.print("" + file.getPath());
-	                Main.bg = file.getAbsolutePath();
+	                Main.path = file.getAbsolutePath();
 	            } else {
 	               // log.append("Open command cancelled by user." + newline);
 	            }
